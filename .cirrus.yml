@@ -1,12 +1,24 @@
 container:
   image: ubuntu:latest
 
-build_task:
-  require_script:
+apt_task:
+  env:
+    MIRROR: http://gce.clouds.archive.ubuntu.com/ubuntu
+  script:
+  - . /etc/lsb-release
+  - '# Ubuntu GCE Mirror Repository'                                                  >  /etc/apt/sources.list
+  - "deb ${MIRROR} ${DISTRIB_CODENAME}           main restricted universe multiverse" >> /etc/apt/sources.list
+  - "deb ${MIRROR} ${DISTRIB_CODENAME}-updates   main restricted universe multiverse" >> /etc/apt/sources.list
+  - "deb ${MIRROR} ${DISTRIB_CODENAME}-backports main restricted universe multiverse" >> /etc/apt/sources.list
+  - "deb ${MIRROR} ${DISTRIB_CODENAME}-security  main restricted universe multiverse" >> /etc/apt/sources.list
   - apt-get update
-  - apt-get install -y build-essential bison flex rake git curl
-  mruby_cache:
+  - apt-get install -y build-essential bison flex rake git curl ca-certificates
+
+mruby_task:
+  cache:
     folder: mruby
-    fingerprint_script: git -C mruby rev-parse HEAD
+    fingerprint_script: git submodule status
     populate_script: git submodule update --init --recursive
-  build_script: rake
+
+build_task:
+  script: rake
