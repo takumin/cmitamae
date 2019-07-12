@@ -2,8 +2,11 @@ container:
   image: ubuntu:latest
 
 build_task:
-  setup_script:
+  require_script:
   - apt-get update
-  - apt-get install -y build-essential bison flex rake git
-  - git submodule update --init --recursive
+  - apt-get install -y build-essential bison flex rake git curl
+  mruby_cache:
+    folder: mruby
+    fingerprint_script: git -C mruby rev-parse HEAD
+    populate_script: git submodule update --init --recursive
   build_script: rake
