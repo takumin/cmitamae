@@ -1,0 +1,9 @@
+container:
+  image: ubuntu:latest
+
+build_task:
+  setup_script:
+  - git submodule update --init --recursive
+  - apt-get update
+  - apt-get install -y build-essential bison flex rake
+  build_script: rake
