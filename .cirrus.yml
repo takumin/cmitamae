@@ -18,3 +18,5 @@ task:
     fingerprint_script: git submodule status
     populate_script: git submodule update --init --recursive
   build_script: rake
+  binaries_artifacts:
+    path: "bin/cmitamae"
