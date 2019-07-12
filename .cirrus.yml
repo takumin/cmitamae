@@ -6,11 +6,11 @@ apt_task:
     MIRROR: http://gce.clouds.archive.ubuntu.com/ubuntu
   script:
   - . /etc/lsb-release
-  - '# Ubuntu GCE Mirror Repository'                                                  >  /etc/apt/sources.list
-  - "deb ${MIRROR} ${DISTRIB_CODENAME}           main restricted universe multiverse" >> /etc/apt/sources.list
-  - "deb ${MIRROR} ${DISTRIB_CODENAME}-updates   main restricted universe multiverse" >> /etc/apt/sources.list
-  - "deb ${MIRROR} ${DISTRIB_CODENAME}-backports main restricted universe multiverse" >> /etc/apt/sources.list
-  - "deb ${MIRROR} ${DISTRIB_CODENAME}-security  main restricted universe multiverse" >> /etc/apt/sources.list
+  - echo '# Ubuntu GCE Mirror Repository'                                                  >  /etc/apt/sources.list
+  - echo "deb ${MIRROR} ${DISTRIB_CODENAME}           main restricted universe multiverse" >> /etc/apt/sources.list
+  - echo "deb ${MIRROR} ${DISTRIB_CODENAME}-updates   main restricted universe multiverse" >> /etc/apt/sources.list
+  - echo "deb ${MIRROR} ${DISTRIB_CODENAME}-backports main restricted universe multiverse" >> /etc/apt/sources.list
+  - echo "deb ${MIRROR} ${DISTRIB_CODENAME}-security  main restricted universe multiverse" >> /etc/apt/sources.list
   - apt-get update
   - apt-get install -y build-essential bison flex rake git curl ca-certificates
 
