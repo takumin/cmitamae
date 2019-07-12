@@ -3,7 +3,7 @@ container:
 
 build_task:
   setup_script:
-  - git submodule update --init --recursive
   - apt-get update
-  - apt-get install -y build-essential bison flex rake
+  - apt-get install -y build-essential bison flex rake git
+  - git submodule update --init --recursive
   build_script: rake
