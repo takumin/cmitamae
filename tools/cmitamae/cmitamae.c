@@ -21,7 +21,7 @@ int main(int argc, char *argv[])
   mrb_define_global_const(mrb, "ARGV", ARGV);
 
   // call __main__(ARGV)
-  mrb_funcall(mrb, mrb_top_self(mrb), "__cmitamae_main__", 1, ARGV);
+  mrb_funcall(mrb, mrb_top_self(mrb), "__main__", 1, ARGV);
 
   return_value = EXIT_SUCCESS;
 
