@@ -1,0 +1,31 @@
+dist: xenial
+language: c
+compiler:
+- gcc
+
+addons:
+  apt:
+    packages:
+    - make
+    - gcc
+    - bison
+    - flex
+    - rake
+    - git
+    - curl
+    - ca-certificates
+
+script:
+- rake
+
+# deploy:
+#   provider: releases
+#   api_key:
+#     secure: ENCRYPT_KEY
+#   file:
+#   - bin/cmitamae
+#   on:
+#     repo: takumin/cmitamae
+#     tags: true
+#     all_branches: true
+#   skip_cleanup: true
