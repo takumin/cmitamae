@@ -14,5 +14,5 @@ jobs:
       run: |-
         sudo apt-get -y update
         sudo apt-get -y --no-install-recommends install make gcc g++ bison flex rake curl ca-certificates
-    - name: Build
+    - name: Build mruby
       run: rake
